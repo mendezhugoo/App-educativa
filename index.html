@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="diseño.css">
+    <title>Juego Educativo</title>
+</head>
+<body>
+    <div id="home-screen" class="container">
+        <h1>Bienvenido al Juego Matemático</h1>
+        <button onclick="startGame()">
+            <img src="src/juegar.png" alt="Iniciar" class="icon"> Iniciar Juego
+        </button>
+        <button onclick="viewProgress()">
+            <img src="src/progreso.png" alt="Progreso" class="icon"> Ver Progreso
+        </button>
+    </div>
+
+    <div id="level-screen" class="container" style="display: none;">
+        <h2>Selecciona el Nivel</h2>
+        <button onclick="startLevel(1)">
+            <img src="src/nivel.png" alt="Nivel 1" class="icon"> Nivel 1
+        </button>
+        <button onclick="startLevel(2)">
+            <img src="src/nivel.png"" alt="Nivel 2" class="icon"> Nivel 2
+        </button>
+        <button onclick="startLevel(3)">
+            <img src="src/nivel.png" alt="Nivel 3" class="icon"> Nivel 3
+        </button>
+        <button onclick="goHome()">
+            <img src="src/inicio.png" alt="Inicio" class="icon"> Volver al Inicio
+        </button>
+    </div>
+
+    <div id="game-screen" class="container" style="display: none;">
+        <h2>Resuelve la operación:</h2>
+        <p id="question"></p>
+        <input type="number" id="answer" placeholder="Tu respuesta">
+        <button id="check-button" onclick="checkAnswer()">
+            <img src="src/respuesta.png" alt="Enviar" class="icon"> Enviar Respuesta
+        </button>
+        <button onclick="changeLevel()">
+            <img src="src/cambiarnivel.png" alt="Cambiar Nivel" class="icon"> Cambiar Nivel
+        </button>
+        <button onclick="goHome()">
+            <img src="src/inicio.png" alt="Inicio" class="icon"> Volver al Inicio
+        </button>
+    </div>
+
+    <div id="progress-screen" class="container" style="display: none;">
+        <h2>Tu Progreso</h2>
+        <p id="score"></p>
+        <button onclick="goHome()">
+            <img src="src/inicio.png" alt="Inicio" class="icon"> Volver al Inicio
+        </button>
+    </div>
+
+    <script src="logica.js"></script>
+</body>
+</html>
