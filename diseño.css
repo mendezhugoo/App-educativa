@@ -51,3 +51,13 @@ input[type="number"] {
     border-radius: 10px;
     width: 80%;
 }
+
+/* Estilo para el botón de salir */
+.exit-button {
+    background-color: #f44336; /* Rojo para destacar el botón de salir */
+    color: white;
+}
+
+.exit-button:hover {
+    background-color: #e53935; /* Rojo oscuro al pasar el cursor */
+}

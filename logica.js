@@ -81,7 +81,7 @@ function checkAnswer() {
     
     // Verificar si el campo de respuesta está vacío
     if (isNaN(answer) || answerField.value.trim() === '') {
-        alert('Por favor, ingresa una respuesta.');
+        showFeedback('Por favor, ingresa una respuesta.', 'error'); // Mostrar mensaje de error
         return; // Salir de la función para evitar que se procese una respuesta vacía
     }
 
@@ -107,7 +107,7 @@ function checkAnswer() {
 
     if (answer === correctAnswer) {
         score += 10 * currentLevel; // Aumenta el puntaje basado en el nivel
-        showFeedback('¡Correcto!', 'correct'); // Mostrar mensaje abajo para respuesta correcta
+        showFeedback('¡Correcto!', 'correct'); // Mostrar mensaje para respuesta correcta
     } else {
         showFeedback(`Incorrecto. La respuesta correcta era ${correctAnswer}.`, 'incorrect');
     }
@@ -156,6 +156,26 @@ function proceedToNextLevel() {
 
 function stayOnCurrentLevel() {
     closeModal();
+    questionCount = 0; // Reiniciar contador de preguntas para seguir en el mismo nivel
+    document.getElementById('check-button').disabled = false; // Habilitar botón de enviar
+    generateQuestion(); // Generar nueva pregunta
+}
+
+function showExitPrompt() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <p>¿Estás seguro de que quieres salir del juego?</p>
+            <button onclick="exitGame()">Sí</button>
+            <button onclick="closeModal()">No</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function exitGame() {
+    closeModal();
     goHome(); // Regresar al inicio
 }
 
@@ -179,4 +199,11 @@ function goHome() {
     document.getElementById('game-screen').style.display = 'none';
     document.getElementById('level-screen').style.display = 'none';
     document.getElementById('home-screen').style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.remove();
+    }
 }
